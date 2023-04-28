@@ -36,6 +36,22 @@ type KeyMap struct {
 	ScrollLeft key.Binding
 }
 
+// ShortHelp returns keybindings to be shown in the mini help view. It's part
+// of the key.Map interface.
+func (k KeyMap) ShortHelp() []key.Binding {
+	return []key.Binding{k.Help, k.RowUp, k.RowDown}
+}
+
+// FullHelp returns keybindings for the expanded help view. It's part of the
+// key.Map interface.
+func (k KeyMap) FullHelp() [][]key.Binding {
+	return [][]key.Binding{
+		{k.Help},
+		{k.Install, k.Delete, k.Update},
+		{k.RowUp, k.RowDown},
+	}
+}
+
 // DefaultKeyMap returns a set of sensible defaults for controlling a focused table.
 func DefaultKeyMap() KeyMap {
 	return KeyMap{

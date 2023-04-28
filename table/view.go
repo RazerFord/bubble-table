@@ -50,6 +50,8 @@ func (m Model) View() string {
 		return ""
 	}
 
+	rowStrs = append(rowStrs, m.help.View(m.keyMap)) 
+
 	body.WriteString(lipgloss.JoinVertical(lipgloss.Left, rowStrs...))
 
 	return body.String()

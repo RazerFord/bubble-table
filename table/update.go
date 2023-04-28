@@ -95,6 +95,10 @@ func (m *Model) handleKeypress(msg tea.KeyMsg) {
 		m.pageLast()
 	}
 
+	if key.Matches(msg, m.keyMap.Help) {
+		m.help.ShowAll = !m.help.ShowAll
+	}
+
 	if key.Matches(msg, m.keyMap.Filter) {
 		m.filterTextInput.Focus()
 		m.appendUserEvent(UserEventFilterInputFocused{})
@@ -143,6 +147,8 @@ func (m Model) Update(msg tea.Msg) (Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		m.handleKeypress(msg)
+	case tea.WindowSizeMsg:
+		m.help.Width = msg.Width
 	}
 
 	return m, nil

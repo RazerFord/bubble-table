@@ -1,6 +1,7 @@
 package table
 
 import (
+	"github.com/charmbracelet/bubbles/help"
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -30,6 +31,7 @@ type Model struct {
 	// Interaction
 	focused        bool
 	keyMap         KeyMap
+	help           help.Model
 	selectableRows bool
 	rowCursorIndex int
 
@@ -95,6 +97,7 @@ func New(columns []Column) Model {
 		headerVisible:  true,
 		footerVisible:  true,
 		keyMap:         DefaultKeyMap(),
+		help:           help.New(),
 
 		selectedText:   "[x]",
 		unselectedText: "[ ]",
