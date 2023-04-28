@@ -14,6 +14,10 @@ type KeyMap struct {
 	PageFirst key.Binding
 	PageLast  key.Binding
 
+	Install key.Binding
+	Delete  key.Binding
+	Update  key.Binding
+
 	// Filter allows the user to start typing and filter the rows.
 	Filter key.Binding
 
@@ -35,24 +39,42 @@ func DefaultKeyMap() KeyMap {
 	return KeyMap{
 		RowDown: key.NewBinding(
 			key.WithKeys("down", "j"),
+			key.WithHelp("↓/j", "move down"),
 		),
 		RowUp: key.NewBinding(
 			key.WithKeys("up", "k"),
+			key.WithHelp("↑/k", "move up"),
 		),
 		RowSelectToggle: key.NewBinding(
 			key.WithKeys(" ", "enter"),
 		),
 		PageDown: key.NewBinding(
 			key.WithKeys("right", "l", "pgdown"),
+			key.WithHelp("→/l", "next page"),
 		),
 		PageUp: key.NewBinding(
 			key.WithKeys("left", "h", "pgup"),
+			key.WithHelp("←/h", "previous page"),
 		),
 		PageFirst: key.NewBinding(
 			key.WithKeys("home", "g"),
+			key.WithHelp("g", "first page"),
 		),
 		PageLast: key.NewBinding(
 			key.WithKeys("end", "G"),
+			key.WithHelp("G", "last page"),
+		),
+		Install: key.NewBinding(
+			key.WithKeys("i"),
+			key.WithHelp("i", "install"),
+		),
+		Update: key.NewBinding(
+			key.WithKeys("u"),
+			key.WithHelp("u", "update"),
+		),
+		Delete: key.NewBinding(
+			key.WithKeys("d"),
+			key.WithHelp("d", "delete"),
 		),
 		Filter: key.NewBinding(
 			key.WithKeys("/"),
