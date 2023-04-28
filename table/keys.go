@@ -14,6 +14,8 @@ type KeyMap struct {
 	PageFirst key.Binding
 	PageLast  key.Binding
 
+	Help key.Binding
+
 	Install key.Binding
 	Delete  key.Binding
 	Update  key.Binding
@@ -63,6 +65,10 @@ func DefaultKeyMap() KeyMap {
 		PageLast: key.NewBinding(
 			key.WithKeys("end", "G"),
 			key.WithHelp("G", "last page"),
+		),
+		Help: key.NewBinding(
+			key.WithKeys("?"),
+			key.WithHelp("?", "Help"),
 		),
 		Install: key.NewBinding(
 			key.WithKeys("i"),
